@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Intel Summit Check-In</title>
+    <title data-i18n="pageTitle">Intel Summit Check-In</title>
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
@@ -11,13 +11,43 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
+    <div class="language-menu">
+      <button
+        type="button"
+        id="translateButton"
+        class="translate-button"
+        aria-expanded="false"
+        aria-controls="languageOptions"
+      >
+        <span aria-hidden="true">🌐</span>
+        <span data-i18n="translate">Translate</span>
+      </button>
+      <div id="languageOptions" class="language-options" hidden>
+        <button type="button" data-language="en" data-i18n="english">
+          English
+        </button>
+        <button type="button" data-language="es" data-i18n="spanish">
+          Spanish (Español)
+        </button>
+        <button type="button" data-language="fr" data-i18n="french">
+          French (Français)
+        </button>
+        <button type="button" data-language="pt" data-i18n="portuguese">
+          Portuguese (Português)
+        </button>
+      </div>
+    </div>
     <header class="hero">
       <div class="hero-content">
         <img src="img/intel-logo.svg" alt="Intel Logo" class="intel-logo" />
-        <p class="eyebrow">Intel Sustainability Summit</p>
-        <h1>Welcome to the room where progress gets practical.</h1>
+        <p class="eyebrow" data-i18n="summitName">
+          Intel Sustainability Summit
+        </p>
+        <h1 data-i18n="heroTitle">
+          Welcome to the room where progress gets practical.
+        </h1>
         <div class="hero-divider"></div>
-        <p class="hero-subtitle">
+        <p class="hero-subtitle" data-i18n="heroSubtitle">
           Check in, find your team, and make your presence count.
         </p>
       </div>
@@ -25,23 +55,25 @@
     <main class="page-shell">
       <section class="attendance-overview" aria-labelledby="attendance-heading">
         <div class="overview-copy">
-          <p class="section-kicker">Live summit pulse</p>
-          <h2 id="attendance-heading">Total attendance</h2>
+          <p class="section-kicker" data-i18n="livePulse">Live summit pulse</p>
+          <h2 id="attendance-heading" data-i18n="totalAttendance">
+            Total attendance
+          </h2>
           <p class="attendance-number">
             <span id="attendeeCount">0</span
-            ><span class="goal-label"
-              >/ <span id="goalCount">50</span> checked in</span
-            >
+            ><span class="goal-label">/ <span id="goalCount">50</span> <span data-i18n="checkedIn">checked in</span></span>
           </p>
         </div>
         <div class="progress-area">
           <div class="progress-label">
-            <span>Progress to goal</span><strong id="progressText">0%</strong>
+            <span data-i18n="progressToGoal">Progress to goal</span
+            ><strong id="progressText">0%</strong>
           </div>
           <div
             class="progress-container"
             role="progressbar"
             aria-label="Attendance progress"
+            data-i18n-aria-label="attendanceProgress"
             aria-valuemin="0"
             aria-valuemax="100"
             aria-valuenow="0"
@@ -53,7 +85,7 @@
       <section id="celebration" class="celebration" aria-live="polite" hidden>
         <span class="celebration-icon">&#127881;</span>
         <div>
-          <h2>Attendance goal reached!</h2>
+          <h2 data-i18n="goalReached">Attendance goal reached!</h2>
           <p id="celebrationMessage"></p>
         </div>
       </section>
@@ -62,60 +94,64 @@
           class="panel check-in-panel"
           aria-labelledby="check-in-heading"
         >
-          <p class="section-kicker">Step 01</p>
-          <h2 id="check-in-heading">Check in for the summit</h2>
-          <p class="panel-intro">
+          <p class="section-kicker" data-i18n="stepOne">Step 01</p>
+          <h2 id="check-in-heading" data-i18n="checkInHeading">
+            Check in for the summit
+          </h2>
+          <p class="panel-intro" data-i18n="checkInInstructions">
             Add your name and choose the team you are joining today.
           </p>
           <form class="check-in" id="checkInForm">
             <div class="field-group">
-              <label for="attendeeName">Attendee name</label
+              <label for="attendeeName" data-i18n="attendeeName">Attendee name</label
               ><input
                 type="text"
                 id="attendeeName"
                 name="attendeeName"
                 placeholder="e.g. Yashira Rivera"
+                data-i18n-placeholder="namePlaceholder"
                 required
               />
             </div>
             <div class="field-group">
-              <label for="teamSelect">Summit team</label
+              <label for="teamSelect" data-i18n="summitTeam">Summit team</label
               ><select id="teamSelect" name="team" required>
-                <option value="" disabled selected>Select a team</option>
-                <option value="water">Team Water Wise</option>
-                <option value="zero">Team Net Zero</option>
-                <option value="power">Team Renewables</option>
-                <option value="circular">Team Circularity</option>
+                <option value="" disabled selected data-i18n="selectTeam">Select a team</option>
+                <option value="water" data-i18n="team.water">Team Water Wise</option>
+                <option value="zero" data-i18n="team.zero">Team Net Zero</option>
+                <option value="power" data-i18n="team.power">Team Renewables</option>
+                <option value="circular" data-i18n="team.circular">Team Circularity</option>
               </select>
             </div>
             <button type="submit" id="checkInBtn">
-              <i class="fas fa-user-check"></i> Check in
+              <i class="fas fa-user-check"></i>
+              <span data-i18n="checkIn">Check in</span>
             </button>
           </form>
           <p id="greeting" class="message" aria-live="polite" hidden></p>
         </section>
         <section class="panel team-panel" aria-labelledby="teams-heading">
-          <p class="section-kicker">Step 02</p>
-          <h2 id="teams-heading">Team attendance</h2>
+          <p class="section-kicker" data-i18n="stepTwo">Step 02</p>
+          <h2 id="teams-heading" data-i18n="teamAttendance">Team attendance</h2>
           <div class="teams-grid">
             <div class="team-card water">
               <span class="team-mark">W</span
-              ><span class="team-name">Team Water Wise</span
+              ><span class="team-name" data-i18n="team.water">Team Water Wise</span
               ><strong id="waterCount">0</strong>
             </div>
             <div class="team-card zero">
               <span class="team-mark">N</span
-              ><span class="team-name">Team Net Zero</span
+              ><span class="team-name" data-i18n="team.zero">Team Net Zero</span
               ><strong id="zeroCount">0</strong>
             </div>
             <div class="team-card power">
               <span class="team-mark">R</span
-              ><span class="team-name">Team Renewables</span
+              ><span class="team-name" data-i18n="team.power">Team Renewables</span
               ><strong id="powerCount">0</strong>
             </div>
             <div class="team-card circular">
               <span class="team-mark">C</span
-              ><span class="team-name">Team Circularity</span
+              ><span class="team-name" data-i18n="team.circular">Team Circularity</span
               ><strong id="circularCount">0</strong>
             </div>
           </div>
@@ -126,13 +162,15 @@
         >
           <div class="panel-heading">
             <div>
-              <p class="section-kicker">Step 03</p>
-              <h2 id="attendees-heading">Checked-in attendees</h2>
+              <p class="section-kicker" data-i18n="stepThree">Step 03</p>
+              <h2 id="attendees-heading" data-i18n="checkedInAttendees">
+                Checked-in attendees
+              </h2>
             </div>
             <span id="attendeeListCount" class="list-count">0</span>
           </div>
           <ul id="attendeeList" class="attendee-list">
-            <li class="empty-state">
+            <li class="empty-state" data-i18n="noAttendees">
               No attendees yet. Be the first to check in.
             </li>
           </ul>
@@ -141,48 +179,53 @@
           class="panel reflection-panel"
           aria-labelledby="reflection-heading"
         >
-          <p class="section-kicker">Step 04</p>
-          <h2 id="reflection-heading">Reflect on your build</h2>
+          <p class="section-kicker" data-i18n="stepFour">Step 04</p>
+          <h2 id="reflection-heading" data-i18n="reflectionHeading">
+            Reflect on your build
+          </h2>
           <div class="reflection-list">
             <form class="reflection-card" data-reflection="understand">
               <label for="understandResponse"
-                >What do you understand better after completing this
-                project?</label
+                data-i18n="reflectionUnderstand"
+                >What do you understand better after completing this project?</label
               ><textarea
                 id="understandResponse"
                 rows="4"
                 placeholder="Write your reflection..."
+                data-i18n-placeholder="reflectionPlaceholder"
               ></textarea
               ><button type="submit" class="secondary-button">
-                Save response
+                <span data-i18n="saveResponse">Save response</span>
               </button>
               <p class="save-status" aria-live="polite"></p>
             </form>
             <form class="reflection-card" data-reflection="interview">
               <label for="interviewResponse"
-                >What could you explain about this project in an
-                interview?</label
+                data-i18n="reflectionInterview"
+                >What could you explain about this project in an interview?</label
               ><textarea
                 id="interviewResponse"
                 rows="4"
                 placeholder="Write your reflection..."
+                data-i18n-placeholder="reflectionPlaceholder"
               ></textarea
               ><button type="submit" class="secondary-button">
-                Save response
+                <span data-i18n="saveResponse">Save response</span>
               </button>
               <p class="save-status" aria-live="polite"></p>
             </form>
             <form class="reflection-card" data-reflection="demo">
               <label for="demoResponse"
-                >How could you demonstrate this project in a real-world
-                scenario?</label
+                data-i18n="reflectionDemo"
+                >How could you demonstrate this project in a real-world scenario?</label
               ><textarea
                 id="demoResponse"
                 rows="4"
                 placeholder="Write your reflection..."
+                data-i18n-placeholder="reflectionPlaceholder"
               ></textarea
               ><button type="submit" class="secondary-button">
-                Save response
+                <span data-i18n="saveResponse">Save response</span>
               </button>
               <p class="save-status" aria-live="polite"></p>
             </form>
@@ -195,7 +238,7 @@
       <a
         href="https://www.intel.com/content/www/us/en/corporate-responsibility/2030-goals.html"
         class="footer-link"
-        >Sustainability Goals</a
+        ><span data-i18n="sustainabilityGoals">Sustainability Goals</span></a
       >
     </footer>
     <script src="script.js"></script>
