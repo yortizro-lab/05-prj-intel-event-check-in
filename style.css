@@ -75,6 +75,42 @@ h2 {
   padding: 54px 24px 64px;
   position: relative;
 }
+html[lang="es"] .hero {
+  background: linear-gradient(
+      120deg,
+      rgba(0, 60, 113, 0.82),
+      rgba(0, 113, 197, 0.68) 63%,
+      rgba(0, 167, 217, 0.62)
+    ),
+    url("img/spanish.png") center / 100% 100% no-repeat;
+}
+html[lang="fr"] .hero {
+  background: linear-gradient(
+      120deg,
+      rgba(0, 60, 113, 0.82),
+      rgba(0, 113, 197, 0.68) 63%,
+      rgba(0, 167, 217, 0.62)
+    ),
+    url("img/french.png") center / 100% 100% no-repeat;
+}
+html[lang="pt"] .hero {
+  background: linear-gradient(
+      120deg,
+      rgba(0, 60, 113, 0.82),
+      rgba(0, 113, 197, 0.68) 63%,
+      rgba(0, 167, 217, 0.62)
+    ),
+    url("img/portuguese.png") center / 100% 100% no-repeat;
+}
+@media (max-width: 640px) {
+  .hero,
+  html[lang="es"] .hero,
+  html[lang="fr"] .hero,
+  html[lang="pt"] .hero {
+    background-position: center center;
+    background-size: 100% 100%;
+  }
+}
 .hero::after {
   background: rgba(0, 199, 253, 0.2);
   border: 1px solid rgba(255, 255, 255, 0.2);
