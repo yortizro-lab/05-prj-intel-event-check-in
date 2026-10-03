@@ -1,4 +1,4 @@
-const attendanceGoal = 20;
+const attendanceGoal = 50;
 const storageKey = "intelSummitCheckIn";
 const teamNames = {
   water: "Team Water Wise",
