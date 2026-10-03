@@ -1,10 +1,9 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Intel Sustainability Summit Check-In</title>
-    <!-- Add Font Awesome CSS -->
+    <title>Intel Summit Check-In</title>
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
@@ -12,86 +11,193 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <!-- Hero section with Intel branding -->
-    <div class="hero">
+    <header class="hero">
       <div class="hero-content">
         <img src="img/intel-logo.svg" alt="Intel Logo" class="intel-logo" />
-        <h1>Team Sustainability Summit</h1>
+        <p class="eyebrow">Intel Sustainability Summit</p>
+        <h1>Welcome to the room where progress gets practical.</h1>
         <div class="hero-divider"></div>
-        <p>
-          <i class="fas fa-leaf"></i> Check-in system for sustainability event
-          attendees
+        <p class="hero-subtitle">
+          Check in, find your team, and make your presence count.
         </p>
       </div>
-    </div>
-    <!-- Attendance tracking -->
-    <div class="attendance-tracker">
-      <div class="attendance-header">
-        <i class="fas fa-users"></i>
-        Attendance: <span id="attendeeCount">0</span>/50
-      </div>
-      <div class="progress-container">
-        <div id="progressBar" class="progress-bar"></div>
-      </div>
-    </div>
-    <div class="container">
-      <!-- Feedback message -->
-      <p id="greeting"></p>
-
-      <!-- Check-in form -->
-      <form class="check-in" id="checkInForm">
-        <label for="attendeeName" class="form-label">Attendee Check-In</label>
-        <div class="form-group">
-          <div class="input-wrapper">
-            <input
-              type="text"
-              id="attendeeName"
-              name="attendeeName"
-              placeholder="Enter name..."
-              required
-            />
-            <select id="teamSelect" name="team" required>
-              <option value="" disabled selected>Select Team...</option>
-              <option value="water">Team Water Wise</option>
-              <option value="zero">Team Net Zero</option>
-              <option value="power">Team Renewables</option>
-            </select>
-          </div>
-          <button type="submit" id="checkInBtn">
-            <i class="fas fa-user-check"></i> Check In
-          </button>
+    </header>
+    <main class="page-shell">
+      <section class="attendance-overview" aria-labelledby="attendance-heading">
+        <div class="overview-copy">
+          <p class="section-kicker">Live summit pulse</p>
+          <h2 id="attendance-heading">Total attendance</h2>
+          <p class="attendance-number">
+            <span id="attendeeCount">0</span
+            ><span class="goal-label"
+              >/ <span id="goalCount">20</span> checked in</span
+            >
+          </p>
         </div>
-      </form>
-
-      <!-- Team stats -->
-      <div class="team-stats">
-        <h3>Team Attendance</h3>
-        <div class="teams-grid">
-          <div class="team-card water">
-            <span class="team-name">🌊 Team Water Wise</span>
-            <span class="team-count" id="waterCount">0</span>
+        <div class="progress-area">
+          <div class="progress-label">
+            <span>Progress to goal</span><strong id="progressText">0%</strong>
           </div>
-          <div class="team-card zero">
-            <span class="team-name">🌿 Team Net Zero</span>
-            <span class="team-count" id="zeroCount">0</span>
-          </div>
-          <div class="team-card power">
-            <span class="team-name">⚡ Team Renewables</span>
-            <span class="team-count" id="powerCount">0</span>
+          <div
+            class="progress-container"
+            role="progressbar"
+            aria-label="Attendance progress"
+            aria-valuemin="0"
+            aria-valuemax="100"
+            aria-valuenow="0"
+          >
+            <div id="progressBar" class="progress-bar"></div>
           </div>
         </div>
+      </section>
+      <section id="celebration" class="celebration" aria-live="polite" hidden>
+        <span class="celebration-icon">&#127881;</span>
+        <div>
+          <h2>Attendance goal reached!</h2>
+          <p id="celebrationMessage"></p>
+        </div>
+      </section>
+      <div class="content-grid">
+        <section
+          class="panel check-in-panel"
+          aria-labelledby="check-in-heading"
+        >
+          <p class="section-kicker">Step 01</p>
+          <h2 id="check-in-heading">Check in for the summit</h2>
+          <p class="panel-intro">
+            Add your name and choose the team you are joining today.
+          </p>
+          <form class="check-in" id="checkInForm">
+            <div class="field-group">
+              <label for="attendeeName">Attendee name</label
+              ><input
+                type="text"
+                id="attendeeName"
+                name="attendeeName"
+                placeholder="e.g. Yashira Rivera"
+                required
+              />
+            </div>
+            <div class="field-group">
+              <label for="teamSelect">Summit team</label
+              ><select id="teamSelect" name="team" required>
+                <option value="" disabled selected>Select a team</option>
+                <option value="water">Team Water Wise</option>
+                <option value="zero">Team Net Zero</option>
+                <option value="power">Team Renewables</option>
+                <option value="circular">Team Circularity</option>
+              </select>
+            </div>
+            <button type="submit" id="checkInBtn">
+              <i class="fas fa-user-check"></i> Check in
+            </button>
+          </form>
+          <p id="greeting" class="message" aria-live="polite" hidden></p>
+        </section>
+        <section class="panel team-panel" aria-labelledby="teams-heading">
+          <p class="section-kicker">Step 02</p>
+          <h2 id="teams-heading">Team attendance</h2>
+          <div class="teams-grid">
+            <div class="team-card water">
+              <span class="team-mark">W</span
+              ><span class="team-name">Team Water Wise</span
+              ><strong id="waterCount">0</strong>
+            </div>
+            <div class="team-card zero">
+              <span class="team-mark">N</span
+              ><span class="team-name">Team Net Zero</span
+              ><strong id="zeroCount">0</strong>
+            </div>
+            <div class="team-card power">
+              <span class="team-mark">R</span
+              ><span class="team-name">Team Renewables</span
+              ><strong id="powerCount">0</strong>
+            </div>
+            <div class="team-card circular">
+              <span class="team-mark">C</span
+              ><span class="team-name">Team Circularity</span
+              ><strong id="circularCount">0</strong>
+            </div>
+          </div>
+        </section>
+        <section
+          class="panel attendee-panel"
+          aria-labelledby="attendees-heading"
+        >
+          <div class="panel-heading">
+            <div>
+              <p class="section-kicker">Step 03</p>
+              <h2 id="attendees-heading">Checked-in attendees</h2>
+            </div>
+            <span id="attendeeListCount" class="list-count">0</span>
+          </div>
+          <ul id="attendeeList" class="attendee-list">
+            <li class="empty-state">
+              No attendees yet. Be the first to check in.
+            </li>
+          </ul>
+        </section>
+        <section
+          class="panel reflection-panel"
+          aria-labelledby="reflection-heading"
+        >
+          <p class="section-kicker">Step 04</p>
+          <h2 id="reflection-heading">Reflect on your build</h2>
+          <div class="reflection-list">
+            <form class="reflection-card" data-reflection="understand">
+              <label for="understandResponse"
+                >What do you understand better after completing this
+                project?</label
+              ><textarea
+                id="understandResponse"
+                rows="4"
+                placeholder="Write your reflection..."
+              ></textarea
+              ><button type="submit" class="secondary-button">
+                Save response
+              </button>
+              <p class="save-status" aria-live="polite"></p>
+            </form>
+            <form class="reflection-card" data-reflection="interview">
+              <label for="interviewResponse"
+                >What could you explain about this project in an
+                interview?</label
+              ><textarea
+                id="interviewResponse"
+                rows="4"
+                placeholder="Write your reflection..."
+              ></textarea
+              ><button type="submit" class="secondary-button">
+                Save response
+              </button>
+              <p class="save-status" aria-live="polite"></p>
+            </form>
+            <form class="reflection-card" data-reflection="demo">
+              <label for="demoResponse"
+                >How could you demonstrate this project in a real-world
+                scenario?</label
+              ><textarea
+                id="demoResponse"
+                rows="4"
+                placeholder="Write your reflection..."
+              ></textarea
+              ><button type="submit" class="secondary-button">
+                Save response
+              </button>
+              <p class="save-status" aria-live="polite"></p>
+            </form>
+          </div>
+        </section>
       </div>
-    </div>
-
+    </main>
     <footer class="footer">
-      &copy; 2025 Intel •
+      &copy; 2025 Intel &bull;
       <a
         href="https://www.intel.com/content/www/us/en/corporate-responsibility/2030-goals.html"
         class="footer-link"
         >Sustainability Goals</a
       >
     </footer>
-
     <script src="script.js"></script>
   </body>
 </html>
