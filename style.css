@@ -16,7 +16,7 @@
 body {
   background: var(--paper);
   color: var(--ink);
-  font-family: "DM Sans", sans-serif;
+  font-family: "DM Sans", arial, sans-serif;
   line-height: 1.5;
 }
 h1,
@@ -48,7 +48,7 @@ h2 {
   width: 280px;
 }
 .hero-content {
-  margin: auto;
+  margin: 200px 0 0;
   max-width: 1080px;
   position: relative;
   z-index: 1;
