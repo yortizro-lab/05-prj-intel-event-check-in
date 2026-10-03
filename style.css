@@ -18,6 +18,7 @@ body {
   color: var(--ink);
   font-family: "DM Sans", arial, sans-serif;
   line-height: 1.5;
+  overflow-x: hidden;
 }
 .language-menu {
   position: absolute;
@@ -428,6 +429,9 @@ button:hover {
   .hero {
     padding: 36px 20px 55px;
   }
+  .hero-content {
+    margin-top: 120px;
+  }
   .language-menu {
     right: 14px;
     top: 14px;
@@ -463,6 +467,19 @@ button:hover {
     grid-template-columns: 1fr;
   }
   .hero h1 {
-    font-size: 38px;
+    font-size: clamp(30px, 10vw, 38px);
+  }
+  .hero-subtitle {
+    font-size: 16px;
+  }
+  .attendance-number span:first-child {
+    font-size: 44px;
+  }
+  .panel-heading {
+    align-items: flex-start;
+    gap: 12px;
+  }
+  .list-count {
+    flex-shrink: 0;
   }
 }
